@@ -7,6 +7,7 @@ const authMiddleware = async (req: Request, _res: Response, next: NextFunction) 
     const { authorization } = req.headers;
 
     const user = await TokenManager.authenticateToken(authorization);
+    console.log('User authmiddle', user);
 
     if (!user) {
       throw new HttpException(401, 'Expired or invalid token');

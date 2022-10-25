@@ -1,7 +1,10 @@
-import { ILogin } from './ILogin';
+export interface IUser {
+  data: {
+    id: number;
+    username: string;
+    role: number;
+    email: string;
+    password: string;
+  }
 
-export interface IUser extends ILogin {
-  id: number;
-  username: string;
-  role: number;
 }
