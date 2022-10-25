@@ -12,10 +12,8 @@ export default class LoginController {
   };
 
   public getRole = async (req: Request, res: Response) => {
-    // const { role } = await loginService.getRole(req.body);
     const { authorization } = req.headers;
     const user = (await TokenManager.authenticateToken(authorization)) as IUser;
-
     const { role } = user.data;
     return res.status(200).json({ role });
   };

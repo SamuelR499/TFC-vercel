@@ -21,9 +21,4 @@ export default class LoginService {
     const token = TokenManager.makeToken(user);
     return { token, user };
   };
-
-  public getRole = async (login: ILogin) => {
-    const { user } = await this.makeLogin(login);
-    return user;
-  };
 }
