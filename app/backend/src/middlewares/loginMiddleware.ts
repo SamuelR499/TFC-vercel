@@ -6,7 +6,7 @@ const loginMiddleware = async (req: Request, _res: Response, next: NextFunction)
   const { error } = schemas.loginSchema.validate(req.body);
 
   if (error) {
-    console.log(error);
+    console.log('loginMiddleware --> ', error);
     throw new HttpException(400, error.details[0].message);
   }
   next();
