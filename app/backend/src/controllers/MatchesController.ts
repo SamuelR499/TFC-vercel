@@ -26,9 +26,9 @@ export default class TeamsController {
     const result = await matchService.uptdateMatch(id) as number[];
 
     if (result[0] > 0) {
-      return res.status(201).json({ message: 'Finished' });
+      return res.status(200).json({ message: 'Finished' });
     }
 
-    return res.status(201).json({ message: 'no changes made' });
+    return res.status(401).json({ message: 'no changes made' });
   };
 }
