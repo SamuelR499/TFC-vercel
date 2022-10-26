@@ -50,4 +50,14 @@ export default class TeamService {
 
     return result;
   };
+
+  public uptdateMatch = async (id: string) => {
+    const result = await MatchesModel.update({ inProgress: false }, {
+      where: {
+        id,
+      },
+    });
+
+    return result;
+  };
 }

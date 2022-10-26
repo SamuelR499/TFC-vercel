@@ -18,6 +18,17 @@ export default class TeamsController {
 
   public createMatch = async (req: Request, res: Response) => {
     const match = await matchService.createMatch(req.body);
-    return res.status(200).json(match);
+    return res.status(201).json(match);
+  };
+
+  public uptdateMatch = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const result = await matchService.uptdateMatch(id) as number[];
+
+    if (result[0] > 0) {
+      return res.status(201).json({ message: 'Finished' });
+    }
+
+    return res.status(201).json({ message: 'no changes made' });
   };
 }
