@@ -6,7 +6,7 @@ import HttpException from '../middlewares/HTTPexception';
 
 export default class LoginService {
   public makeLogin = async ({ email, password }: ILogin) => {
-    const [user] = await UserModel.findAll({ where: { email } });
+    const user = await UserModel.findOne({ where: { email } });
 
     if (!user) {
       throw new HttpException(401, 'Incorrect email or password');
