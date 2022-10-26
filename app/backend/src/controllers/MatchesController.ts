@@ -15,4 +15,9 @@ export default class TeamsController {
     const matches = await matchService.getMatches();
     return res.status(200).json(matches);
   };
+
+  public createMatch = async (req: Request, res: Response) => {
+    const match = await matchService.createMatch(req.body);
+    return res.status(200).json(match);
+  };
 }

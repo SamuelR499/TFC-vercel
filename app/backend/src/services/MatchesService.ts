@@ -1,3 +1,4 @@
+import { Imatch } from '../interfaces/IMatch';
 import MatchesModel from '../database/models/MatchesModel';
 import Teams from '../database/models/TeamsModel';
 
@@ -22,7 +23,7 @@ export default class TeamService {
   };
 
   public getMatchesByProgress = async (query: string) => {
-    const boolResponse = JSON.parse(query);
+    const inProgress = JSON.parse(query);
 
     const matches = await MatchesModel.findAll({
       include: [
@@ -37,9 +38,16 @@ export default class TeamService {
           attributes: { exclude: ['id'] },
         },
       ],
-      where: { inProgress: boolResponse },
+      where: { inProgress },
     });
 
     return matches;
+  };
+
+  public createMatch = async (match: Imatch) => {
+    const inProgress = true;
+    const result = await MatchesModel.create({ ...match, inProgress });
+
+    return result;
   };
 }

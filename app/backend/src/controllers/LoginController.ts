@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-import TokenManager from '../utils/TokenManager';
 import LoginService from '../services/LoginService';
-import { IUser } from '../interfaces/Iuser';
+import { IData } from '../interfaces/IData';
 
 const loginService = new LoginService();
 
@@ -11,10 +10,9 @@ export default class LoginController {
     return res.status(200).json({ token });
   };
 
-  public getRole = async (req: Request, res: Response) => {
-    const { authorization } = req.headers;
-    const user = (await TokenManager.authenticateToken(authorization)) as IUser;
-    const { role } = user.data;
+  public getRole = async (req: IData, res: Response) => {
+    const role = req.data?.role;
+
     return res.status(200).json({ role });
   };
 }
