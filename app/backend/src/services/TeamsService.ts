@@ -10,4 +10,12 @@ export default class TeamService {
     const team = await TeamsModel.findOne({ where: { id } });
     return team;
   };
+
+  public teamsExist = async (awayTeam: string, homeTeam: string) => {
+    const teamHome = await TeamsModel.findOne({ where: { id: homeTeam } });
+    const teamAway = await TeamsModel.findOne({ where: { id: awayTeam } });
+
+    const result = !(!teamHome || !teamAway);
+    return result;
+  };
 }
