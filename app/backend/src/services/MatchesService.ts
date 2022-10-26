@@ -21,7 +21,7 @@ export default class TeamService {
     return matches;
   };
 
-  public getMatchesInProgress = async (query: string) => {
+  public getMatchesByProgress = async (query: string) => {
     const boolResponse = JSON.parse(query);
 
     const matches = await MatchesModel.findAll({
