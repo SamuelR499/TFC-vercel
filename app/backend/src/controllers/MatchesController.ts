@@ -23,12 +23,17 @@ export default class TeamsController {
 
   public uptdateMatch = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const result = await matchService.uptdateMatch(id) as number[];
 
-    if (result[0] > 0) {
-      return res.status(200).json({ message: 'Finished' });
-    }
+    await matchService.uptdateMatch(id);
 
-    return res.status(401).json({ message: 'no changes made' });
+    return res.status(200).json({ message: 'Finished' });
+  };
+
+  public uptdateScoreboard = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    await matchService.uptdateScoreboard(id, req.body);
+
+    return res.status(200).json({ message: 'successfully changed' });
   };
 }

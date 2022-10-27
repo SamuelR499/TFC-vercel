@@ -127,4 +127,103 @@ const matchesList = [
   },
 ]
 
-export default matchesList;
+const matchesInProgress = [
+  {
+    "id": 43,
+    "homeTeam": 11,
+    "homeTeamGoals": 0,
+    "awayTeam": 10,
+    "awayTeamGoals": 0,
+    "inProgress": true,
+    "teamHome": {
+      "teamName": "Napoli-SC"
+    },
+    "teamAway": {
+      "teamName": "Minas Brasília"
+    }
+  },
+  {
+    "id": 44,
+    "homeTeam": 7,
+    "homeTeamGoals": 2,
+    "awayTeam": 15,
+    "awayTeamGoals": 2,
+    "inProgress": true,
+    "teamHome": {
+      "teamName": "Flamengo"
+    },
+    "teamAway": {
+      "teamName": "São José-SP"
+    }
+  },
+  {
+    "id": 45,
+    "homeTeam": 5,
+    "homeTeamGoals": 1,
+    "awayTeam": 3,
+    "awayTeamGoals": 1,
+    "inProgress": true,
+    "teamHome": {
+      "teamName": "Cruzeiro"
+    },
+    "teamAway": {
+      "teamName": "Botafogo"
+    }
+  }
+]
+
+const matchesFinesh = [
+  {
+    "id": 43,
+    "homeTeam": 11,
+    "homeTeamGoals": 0,
+    "awayTeam": 10,
+    "awayTeamGoals": 0,
+    "inProgress": false,
+    "teamHome": {
+      "teamName": "Napoli-SC"
+    },
+    "teamAway": {
+      "teamName": "Minas Brasília"
+    }
+  },
+  {
+    "id": 44,
+    "homeTeam": 7,
+    "homeTeamGoals": 2,
+    "awayTeam": 15,
+    "awayTeamGoals": 2,
+    "inProgress": false,
+    "teamHome": {
+      "teamName": "Flamengo"
+    },
+    "teamAway": {
+      "teamName": "São José-SP"
+    }
+  },
+  {
+    "id": 45,
+    "homeTeam": 5,
+    "homeTeamGoals": 1,
+    "awayTeam": 3,
+    "awayTeamGoals": 1,
+    "inProgress": false,
+    "teamHome": {
+      "teamName": "Cruzeiro"
+    },
+    "teamAway": {
+      "teamName": "Botafogo"
+    }
+  }
+]
+
+const newMatch = {
+  "id": 1,
+  "homeTeam": 16,
+  "homeTeamGoals": 2,
+  "awayTeam": 8,
+  "awayTeamGoals": 2,
+  "inProgress": true,
+}
+
+export {matchesList, matchesInProgress, matchesFinesh, newMatch};

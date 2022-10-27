@@ -1,6 +1,7 @@
 import { Imatch } from '../interfaces/IMatch';
 import MatchesModel from '../database/models/MatchesModel';
 import Teams from '../database/models/TeamsModel';
+import { IScoreboard } from '../interfaces/IScoreboard';
 
 export default class TeamService {
   public getMatches = async () => {
@@ -52,12 +53,20 @@ export default class TeamService {
   };
 
   public uptdateMatch = async (id: string) => {
-    const result = await MatchesModel.update({ inProgress: false }, {
+    await MatchesModel.update({ inProgress: false }, {
       where: {
         id,
       },
     });
+  };
 
-    return result;
+  public uptdateScoreboard = async (id: string, scoreboard: IScoreboard) => {
+    const { awayTeamGoals, homeTeamGoals } = scoreboard;
+
+    await MatchesModel.update({ awayTeamGoals, homeTeamGoals }, {
+      where: {
+        id,
+      },
+    });
   };
 }
