@@ -1,7 +1,7 @@
-import { Imatch } from '../interfaces/IMatch';
+import { IMatch, IScoreboard } from '../interfaces';
+
 import MatchesModel from '../database/models/MatchesModel';
 import Teams from '../database/models/TeamsModel';
-import { IScoreboard } from '../interfaces/IScoreboard';
 
 export default class TeamService {
   public getMatches = async () => {
@@ -45,7 +45,7 @@ export default class TeamService {
     return matches;
   };
 
-  public createMatch = async (match: Imatch) => {
+  public createMatch = async (match: IMatch) => {
     const inProgress = true;
     const result = await MatchesModel.create({ ...match, inProgress });
 

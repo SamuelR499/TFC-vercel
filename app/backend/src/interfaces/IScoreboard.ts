@@ -1,4 +1,4 @@
-export interface IScoreboard {
+export default interface IScoreboard {
   homeTeamGoals: string;
   awayTeamGoals: string;
 }

@@ -22,6 +22,7 @@ const teamsMiddleware = async (req: Request, _res: Response, next: NextFunction)
   if (homeTeam === awayTeam) {
     throw new HttpException(422, 'It is not possible to create a match with two equal teams');
   }
+
   try {
     jwt.verify(token, secret);
   } catch (error) {

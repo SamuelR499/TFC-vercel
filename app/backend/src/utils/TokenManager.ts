@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import HttpException from '../middlewares/HTTPexception';
-import { IData } from '../interfaces/IData';
+import { IData } from '../interfaces';
 
 const secret = process.env.JWT_SECRET || ('jwt_secret' as jwt.Secret);
 

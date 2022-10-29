@@ -1,5 +1,5 @@
 import bcrypt = require('bcryptjs');
-import { ILogin } from '../interfaces/ILogin';
+import { ILogin } from '../interfaces';
 import UserModel from '../database/models/UserModel';
 import TokenManager from '../utils/TokenManager';
 import HttpException from '../middlewares/HTTPexception';

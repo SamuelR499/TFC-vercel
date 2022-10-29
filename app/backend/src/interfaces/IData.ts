@@ -1,6 +1,6 @@
 import { Request } from 'express';
 
-export interface IData extends Request {
+export default interface IData extends Request {
   data?: {
     id: number;
     username: string;

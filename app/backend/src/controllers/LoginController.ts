@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import LoginService from '../services/LoginService';
-import { IData } from '../interfaces/IData';
+import { IData } from '../interfaces';
 
 const loginService = new LoginService();
 

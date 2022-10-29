@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import HttpException from './HTTPexception';
 import TokenManager from '../utils/TokenManager';
-import { IData } from '../interfaces/IData';
+import { IData } from '../interfaces';
 
 const authMiddleware = async (req: IData, _res: Response, next: NextFunction) => {
   try {
