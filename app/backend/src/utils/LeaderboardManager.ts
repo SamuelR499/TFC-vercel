@@ -121,7 +121,7 @@ class LeaderboardManager {
     const totalVictories = this.getVictories(totalGames, id, whereIsTeam).length;
     const totalDraws = this.getDraws(totalGames, id, whereIsTeam).length;
 
-    const points = (totalVictories * 3) + totalDraws;
+    const points = (3 * totalVictories) + totalDraws;
 
     return points;
   };
@@ -144,7 +144,7 @@ class LeaderboardManager {
     if (!sort) sort = b.totalVictories - a.totalVictories;
     if (!sort) sort = b.goalsBalance - a.goalsBalance;
     if (!sort) sort = b.goalsFavor - a.goalsFavor;
-    if (!sort) sort = b.goalsOwn - a.goalsOwn;
+    if (!sort) sort = a.goalsOwn - b.goalsOwn;
     return sort;
   };
 }
