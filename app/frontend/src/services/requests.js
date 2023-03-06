@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://tfc-vercel-production.up.railway.app/',
+  baseURL: 'https://tfc-vercel-production.up.railway.app/leaderboard/',
 });
 
 export const setToken = (token) => {
