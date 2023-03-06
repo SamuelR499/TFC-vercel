@@ -4,8 +4,8 @@
   "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run install:apps",
-    "install:apps": "./apps_install.sh",
+    "postinstall": "sh apps_install.sh",
+    "install:apps": "apps_install.sh",
     "pretest": "(cd ./app/backend && /bin/sh tsc_eval.sh)",
     "test": "env $(cat ./app/backend/.env) jest -i --forceExit --verbose",
     "test:browser": "SHOW_BROWSER=true npm test",
