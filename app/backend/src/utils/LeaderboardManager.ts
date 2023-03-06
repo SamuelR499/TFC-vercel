@@ -1,17 +1,5 @@
 import { IMatch, ITeam, ITeamResult } from '../interfaces';
 
-// const INITIAL_TEAM_TABLE = {
-//   name: '',
-//   totalPoints: 0,
-//   totalGames: 0,
-//   totalVictories: 0,
-//   totalDraws: 0,
-//   totalLosses: 0,
-//   goalsFavor: 0,
-//   goalsOwn: 0,
-//   goalsBalance: 0,
-//   efficiency: 0,
-// };
 type teamType = 'homeTeam' | 'awayTeam';
 
 class LeaderboardManager {
@@ -147,6 +135,35 @@ class LeaderboardManager {
     if (!sort) sort = a.goalsOwn - b.goalsOwn;
     return sort;
   };
+
+  // ---------------------------------------------------------
+
+  public getLeaderBoard = (home: ITeamResult[], away: ITeamResult[]) => {
+    const arrLeaders: ITeamResult[] = home.map((homeTeam) => {
+      const awayAndHome = away.find((awayTeam) => awayTeam.name === homeTeam.name);
+      return { name: homeTeam.name,
+        totalPoints: homeTeam.totalPoints + (awayAndHome?.totalPoints ?? 0),
+        totalGames: homeTeam.totalGames + (awayAndHome?.totalGames ?? 0),
+        totalVictories: homeTeam.totalVictories + (awayAndHome?.totalVictories ?? 0),
+        totalDraws: homeTeam.totalDraws + (awayAndHome?.totalDraws ?? 0),
+        totalLosses: homeTeam.totalLosses + (awayAndHome?.totalLosses ?? 0),
+        goalsFavor: homeTeam.goalsFavor + (awayAndHome?.goalsFavor ?? 0),
+        goalsOwn: homeTeam.goalsOwn + (awayAndHome?.goalsOwn ?? 0),
+        goalsBalance: homeTeam.goalsBalance + (awayAndHome?.goalsBalance ?? 0),
+        efficiency: LeaderboardManager.getEfi(
+          homeTeam.totalPoints + (awayAndHome?.totalPoints ?? 0),
+          homeTeam.totalGames + (awayAndHome?.totalGames ?? 0),
+        ),
+      };
+    });
+    return arrLeaders.sort(this.deepSort);
+  }
+
+  static getEfi(pontosTotais: number, jogosTotais: number): number {
+    const resultado = Number(((pontosTotais / (jogosTotais * 3)) * 100).toFixed(2));
+    return resultado;
+  }
+
 }
 
 export default new LeaderboardManager();
