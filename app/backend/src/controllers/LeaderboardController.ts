@@ -20,4 +20,15 @@ export default class LeaderboardController {
     const result = leaderboardManager.getTeamTable(matches, teams, 'awayTeam');
     return res.status(200).json(result);
   };
+
+  public getAllTeamData = async (_req: Request, res: Response) => {
+    const matches = await matchesService.getMatchesByProgress('false');
+    const teams = await teamsService.getTeams();
+    const homeResult = leaderboardManager.getTeamTable(matches, teams, 'homeTeam');
+    const awayResult = leaderboardManager.getTeamTable(matches, teams, 'awayTeam');
+
+    const allTeams = leaderboardManager.getLeaderBoard(homeResult, awayResult);
+    return res.status(200).json(allTeams);
+
+  };
 }
